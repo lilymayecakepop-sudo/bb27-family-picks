@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #c41e3a;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.family-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.family-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 2px solid #ddd;
+}
+
+.family-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    color: #c41e3a;
+    border-bottom: 2px solid #c41e3a;
+    padding-bottom: 0.3rem;
+}
+
+.contestants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.5rem;
+}
+
+.contestant-card {
+    position: relative;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contestant-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.contestant-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.contestant-image:hover {
+    transform: scale(1.05);
+}
+
+.contestant-name {
+    margin-top: 0.3rem;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+}
+
+/* Red X overlay for eliminated contestants */
+.eliminated::after {
+    content: '✗';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: rgba(196, 30, 58, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .family-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .family-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contestants-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .contestants-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contestant-image {
+        height: 80px;
+    }
+
+    .eliminated::after {
+        height: 80px;
+        font-size: 2rem;
+    }
+}
