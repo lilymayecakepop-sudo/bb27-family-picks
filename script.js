@@ -8,17 +8,17 @@ const familyPicks = {
 
 // Direct image URLs - Big Brother 27 CBS headshots from BigBrother Wiki
 const imageUrls = {
-    "vince": "https://static.wikia.nocookie.net/bigbrother/images/7/70/US27_Vince_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708162127",
-    "morgan": "https://static.wikia.nocookie.net/bigbrother/images/4/4e/US27_Morgan_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708161518",
-    "adrian": "https://static.wikia.nocookie.net/bigbrother/images/f/f3/US27_Adrian_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708161225",
-    "jimmy": "https://static.wikia.nocookie.net/bigbrother/images/0/04/US27_Jimmy_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708161354",
-    "keanu": "https://static.wikia.nocookie.net/bigbrother/images/3/3c/US27_Keanu_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708161425",
-    "lauren": "https://static.wikia.nocookie.net/bigbrother/images/6/60/US27_Lauren_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708161450",
-    "ashley": "https://static.wikia.nocookie.net/bigbrother/images/9/97/US27_Ashley_Large.jpg/revision/latest/scale-to-width-down/268?cb=20250708161330",
-    "ava": "https://static.wikia.nocookie.net/bigbrother/images/f/fa/US27_Ava_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708161340",
-    "rylie": "https://static.wikia.nocookie.net/bigbrother/images/9/93/US27_Rylie_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708161538",
-    "katherine": "https://static.wikia.nocookie.net/bigbrother/images/6/69/US27_Katherine_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250711082319",
-    "will": "https://static.wikia.nocookie.net/bigbrother/images/f/fe/US27_Will_Large.jpg/revision/latest/scale-to-width-down/1200?cb=20250708161551"
+    "vince": "https://static.wikia.nocookie.net/bigbrother/images/7/70/US27_Vince_Large.jpg/revision/latest?cb=20250708162127",
+    "morgan": "https://static.wikia.nocookie.net/bigbrother/images/4/4e/US27_Morgan_Large.jpg/revision/latest?cb=20250708161518",
+    "adrian": "https://static.wikia.nocookie.net/bigbrother/images/f/f3/US27_Adrian_Large.jpg/revision/latest?cb=20250708161225",
+    "jimmy": "https://static.wikia.nocookie.net/bigbrother/images/0/04/US27_Jimmy_Large.jpg/revision/latest?cb=20250708161354",
+    "keanu": "https://static.wikia.nocookie.net/bigbrother/images/3/3c/US27_Keanu_Large.jpg/revision/latest?cb=20250708161425",
+    "lauren": "https://static.wikia.nocookie.net/bigbrother/images/6/60/US27_Lauren_Large.jpg/revision/latest?cb=20250708161450",
+    "ashley": "https://static.wikia.nocookie.net/bigbrother/images/9/97/US27_Ashley_Large.jpg/revision/latest?cb=20250708161330",
+    "ava": "https://static.wikia.nocookie.net/bigbrother/images/f/fa/US27_Ava_Large.jpg/revision/latest?cb=20250708161340",
+    "rylie": "https://static.wikia.nocookie.net/bigbrother/images/9/93/US27_Rylie_Large.jpg/revision/latest?cb=20250708161538",
+    "katherine": "https://static.wikia.nocookie.net/bigbrother/images/6/69/US27_Katherine_Large.jpg/revision/latest?cb=20250711082319",
+    "will": "https://static.wikia.nocookie.net/bigbrother/images/f/fe/US27_Will_Large.jpg/revision/latest?cb=20250708161551"
 };
 
 // Background information links for each contestant
@@ -47,7 +47,7 @@ function isEliminated(contestant) {
 // Function to create contestant card HTML
 function createContestantCard(contestant) {
     const isEliminatedClass = isEliminated(contestant) ? 'eliminated' : '';
-    const imageUrl = imageUrls[contestant.toLowerCase()] || 'images/placeholder.jpg';
+    const imageUrl = imageUrls[contestant.toLowerCase()] || generatePlaceholder(contestant);
     const backgroundUrl = backgroundLinks[contestant.toLowerCase()] || '#';
 
     return `
@@ -58,10 +58,24 @@ function createContestantCard(contestant) {
             <img src="${imageUrl}"
                  alt="${contestant}"
                  class="contestant-image"
-                 onerror="this.src='images/placeholder.jpg'">
+                 crossorigin="anonymous"
+                 onerror="this.src='${generatePlaceholder(contestant)}'">
             <div class="contestant-name">${contestant}</div>
         </div>
     `;
+}
+
+// Function to generate SVG placeholder
+function generatePlaceholder(name) {
+    const initial = name.charAt(0).toUpperCase();
+    return `data:image/svg+xml;base64,${btoa(`
+        <svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill="#ddd"/>
+            <circle cx="75" cy="60" r="25" fill="#999"/>
+            <path d="M45 120 Q45 100 75 100 Q105 100 105 120 L105 150 L45 150 Z" fill="#999"/>
+            <text x="50%" y="140" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">${name}</text>
+        </svg>
+    `)}`;
 }
 
 // Function to create family card HTML
