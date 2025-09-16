@@ -6,19 +6,19 @@ const familyPicks = {
     "Lily": ["rylie", "katherine", "will"]
 };
 
-// Direct image URLs - Big Brother 27 CBS headshots from BigBrother Wiki
+// Local image paths - Big Brother 27 CBS headshots downloaded locally
 const imageUrls = {
-    "vince": "https://static.wikia.nocookie.net/bigbrother/images/7/70/US27_Vince_Large.jpg/revision/latest?cb=20250708162127",
-    "morgan": "https://static.wikia.nocookie.net/bigbrother/images/4/4e/US27_Morgan_Large.jpg/revision/latest?cb=20250708161518",
-    "adrian": "https://static.wikia.nocookie.net/bigbrother/images/f/f3/US27_Adrian_Large.jpg/revision/latest?cb=20250708161225",
-    "jimmy": "https://static.wikia.nocookie.net/bigbrother/images/0/04/US27_Jimmy_Large.jpg/revision/latest?cb=20250708161354",
-    "keanu": "https://static.wikia.nocookie.net/bigbrother/images/3/3c/US27_Keanu_Large.jpg/revision/latest?cb=20250708161425",
-    "lauren": "https://static.wikia.nocookie.net/bigbrother/images/6/60/US27_Lauren_Large.jpg/revision/latest?cb=20250708161450",
-    "ashley": "https://static.wikia.nocookie.net/bigbrother/images/9/97/US27_Ashley_Large.jpg/revision/latest?cb=20250708161330",
-    "ava": "https://static.wikia.nocookie.net/bigbrother/images/f/fa/US27_Ava_Large.jpg/revision/latest?cb=20250708161340",
-    "rylie": "https://static.wikia.nocookie.net/bigbrother/images/9/93/US27_Rylie_Large.jpg/revision/latest?cb=20250708161538",
-    "katherine": "https://static.wikia.nocookie.net/bigbrother/images/6/69/US27_Katherine_Large.jpg/revision/latest?cb=20250711082319",
-    "will": "https://static.wikia.nocookie.net/bigbrother/images/f/fe/US27_Will_Large.jpg/revision/latest?cb=20250708161551"
+    "vince": "images/vince.jpg",
+    "morgan": "images/morgan.jpg",
+    "adrian": "images/adrian.jpg",
+    "jimmy": "images/jimmy.jpg",
+    "keanu": "images/keanu.jpg",
+    "lauren": "images/lauren.jpg",
+    "ashley": "images/ashley.jpg",
+    "ava": "images/ava.jpg",
+    "rylie": "images/rylie.jpg",
+    "katherine": "images/katherine.jpg",
+    "will": "images/will.jpg"
 };
 
 // Background information links for each contestant
