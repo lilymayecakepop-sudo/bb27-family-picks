@@ -138,10 +138,13 @@ document.addEventListener('DOMContentLoaded', function() {
     renderFamilyPicks();
 
     // Log instructions for manual updates
+    console.log('=== Big Brother 27 Family Picks - Local Images Version ===');
+    console.log('Images loaded from local files (not external URLs)');
     console.log('To eliminate a contestant, use: addElimination("name")');
     console.log('To remove elimination, use: removeElimination("name")');
     console.log('Current eliminated contestants:', eliminated);
     console.log('');
     console.log('Click on any contestant photo to open their background information!');
     console.log('Background links are available for all contestants.');
+    console.log('Script loaded at:', new Date().toLocaleString());
 });

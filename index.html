@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Brother 27 - Family Picks</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 <body>
     <header>
@@ -21,6 +24,12 @@
         <p>Images © CBS</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Cache-busting script loader
+        const timestamp = new Date().getTime();
+        const script = document.createElement('script');
+        script.src = 'script.js?v=' + timestamp;
+        document.head.appendChild(script);
+    </script>
 </body>
 </html>
